@@ -10,6 +10,7 @@ const initialState: { filters: IFilters } = {
     year: undefined,
     ["countries.name"]: undefined,
     type: undefined,
+    page: "1",
   },
 };
 

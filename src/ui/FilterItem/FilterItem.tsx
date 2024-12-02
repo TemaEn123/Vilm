@@ -1,3 +1,9 @@
+import { useState } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { changeFilters } from "../../redux/slices/filtersSlice";
+import { RootState } from "../../redux/store";
+
 import {
   FormControl,
   InputLabel,
@@ -5,22 +11,29 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+
 import { IDataForFiltersItem } from "../../interfaces";
-import { changeFilters } from "../../redux/slices/filtersSlice";
 
 interface Props {
   item: IDataForFiltersItem;
 }
 
 const FilterItem = ({ item }: Props) => {
-  const [name, setName] = useState<string>("");
+  const filters = useSelector((state: RootState) => state.filters.filters);
+
+  const [name, setName] = useState<string | undefined>(
+    filters[item.slugName as keyof typeof filters]
+      ? filters[item.slugName as keyof typeof filters]
+      : ""
+  );
 
   const dispatch = useDispatch();
 
   const handleChange = (event: SelectChangeEvent) => {
     setName(event.target.value as string);
+    if (Number(filters.page) > 1) {
+      dispatch(changeFilters(["page", "1"]));
+    }
     if (event.target.value === "") {
       dispatch(changeFilters([item.slugName, undefined]));
     } else {
