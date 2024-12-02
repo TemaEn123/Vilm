@@ -1,12 +1,15 @@
-import FilterItem from "../../ui/FilterItem/FilterItem";
-import { dataForFilters } from "../../data";
-import { Box, Button, SvgIcon } from "@mui/material";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { changeFilters } from "../../redux/slices/filtersSlice";
 import { RootState } from "../../redux/store";
 import useThrottle from "../../helpers/hooks/useThrottle";
+
+import FilterItem from "../../ui/FilterItem/FilterItem";
+import { Box, Button, SvgIcon } from "@mui/material";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+
+import { dataForFilters } from "../../data";
 
 const Filters = () => {
   const [sortType, setSortType] = useState<boolean>(false);

@@ -1,10 +1,13 @@
+import { useGetPopularFilmsQuery } from "../../redux/services/filmsApi";
+
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { useGetPopularFilmsQuery } from "../../redux/services/filmsApi";
-import { Box } from "@mui/material";
-import { IPopularFilm } from "../../interfaces";
-import FilmCard from "../FilmCard/FilmCard";
+
+import FilmCard from "../../ui/FilmCard/FilmCard";
 import FilmCardSkeleton from "../../ui/FilmCardSkeleton/FilmCardSkeleton";
+import { Box } from "@mui/material";
+
+import { IPopularFilm } from "../../interfaces";
 
 const responsive = {
   desktop: {

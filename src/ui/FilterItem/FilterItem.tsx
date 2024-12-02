@@ -1,8 +1,10 @@
 import { useState } from "react";
 
+
 import { useDispatch, useSelector } from "react-redux";
 import { changeFilters } from "../../redux/slices/filtersSlice";
 import { RootState } from "../../redux/store";
+import { changeFilters } from "../../redux/slices/filtersSlice";
 
 import {
   FormControl,

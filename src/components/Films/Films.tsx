@@ -1,13 +1,17 @@
-import { Box } from "@mui/material";
-import FilmCard from "../FilmCard/FilmCard";
 import { useGetFilmsQuery } from "../../redux/services/filmsApi";
-import FilmCardSkeleton from "../../ui/FilmCardSkeleton/FilmCardSkeleton";
-import { IFilmInCatalog } from "../../interfaces";
 import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import ShowMoreButton from "../../ui/ShowMoreButton/ShowMoreButton";
 import { changeFilters } from "../../redux/slices/filtersSlice";
+
+import ShowMoreButton from "../../ui/ShowMoreButton/ShowMoreButton";
 import LoadingIcon from "../../ui/LoadingIcon/LoadingIcon";
+import FilmCard from "../../ui/FilmCard/FilmCard";
+import FilmCardSkeleton from "../../ui/FilmCardSkeleton/FilmCardSkeleton";
+import { Box } from "@mui/material";
+import FilmCardSkeleton from "../../ui/FilmCardSkeleton/FilmCardSkeleton";
+
+import { IFilmInCatalog } from "../../interfaces";
 
 const Films = () => {
   const dispatch = useDispatch();

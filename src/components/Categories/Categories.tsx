@@ -1,11 +1,15 @@
-import { ToggleButtonGroup } from "@mui/material";
 import { useState } from "react";
-import { categories } from "../../data";
-import CategoryButton from "../../ui/CategoryButton/CategoryButton";
+
 import { useDispatch, useSelector } from "react-redux";
-import { changeFilters } from "../../redux/slices/filtersSlice";
 import { RootState } from "../../redux/store";
+import { changeFilters } from "../../redux/slices/filtersSlice";
+
 import useThrottle from "../../helpers/hooks/useThrottle";
+
+import CategoryButton from "../../ui/CategoryButton/CategoryButton";
+import { ToggleButtonGroup } from "@mui/material";
+
+import { categories } from "../../data";
 
 const Categories = () => {
   const filters = useSelector((state: RootState) => state.filters.filters);
