@@ -1,3 +1,8 @@
+import { useState } from "react";
+
+import { useDispatch } from "react-redux";
+import { changeFilters } from "../../redux/slices/filtersSlice";
+
 import {
   FormControl,
   InputLabel,
@@ -5,10 +10,8 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+
 import { IDataForFiltersItem } from "../../interfaces";
-import { changeFilters } from "../../redux/slices/filtersSlice";
 
 interface Props {
   item: IDataForFiltersItem;

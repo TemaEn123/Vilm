@@ -1,7 +1,9 @@
 import { ChangeEvent, useEffect, useState } from "react";
+
 import { Link } from "react-router";
-import { Box, Link as MUILink } from "@mui/material";
+
 import Search from "../Search/Search";
+import { Box, Link as MUILink } from "@mui/material";
 
 const Header = () => {
   const [searchValue, setSearchValue] = useState<string>("");
