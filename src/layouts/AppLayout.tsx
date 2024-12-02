@@ -1,8 +1,8 @@
 import { Outlet } from "react-router";
 
-import { Container } from "@mui/material";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import { Container } from "@mui/material";
 
 const AppLayout = () => {
   return (
