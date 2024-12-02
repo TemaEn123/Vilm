@@ -1,13 +1,11 @@
 import { useGetFilmsQuery } from "../../redux/services/filmsApi";
 import { useDispatch, useSelector } from "react-redux";
-import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { changeFilters } from "../../redux/slices/filtersSlice";
 
 import ShowMoreButton from "../../ui/ShowMoreButton/ShowMoreButton";
 import LoadingIcon from "../../ui/LoadingIcon/LoadingIcon";
 import FilmCard from "../../ui/FilmCard/FilmCard";
-import FilmCardSkeleton from "../../ui/FilmCardSkeleton/FilmCardSkeleton";
 import { Box } from "@mui/material";
 import FilmCardSkeleton from "../../ui/FilmCardSkeleton/FilmCardSkeleton";
 
