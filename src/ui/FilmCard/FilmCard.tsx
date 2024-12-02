@@ -1,5 +1,7 @@
-import { Box, Link as MUILink, Typography } from "@mui/material";
 import { Link } from "react-router";
+
+import { Box, Link as MUILink, Typography } from "@mui/material";
+
 import { IFilmInCatalog, IPopularFilm } from "../../interfaces";
 
 interface Props {

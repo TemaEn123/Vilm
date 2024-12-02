@@ -1,10 +1,12 @@
-import { Box } from "@mui/material";
-import FilmCard from "../FilmCard/FilmCard";
 import { useGetFilmsQuery } from "../../redux/services/filmsApi";
-import FilmCardSkeleton from "../../ui/FilmCardSkeleton/FilmCardSkeleton";
-import { IFilmInCatalog } from "../../interfaces";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+
+import FilmCard from "../../ui/FilmCard/FilmCard";
+import FilmCardSkeleton from "../../ui/FilmCardSkeleton/FilmCardSkeleton";
+import { Box } from "@mui/material";
+
+import { IFilmInCatalog } from "../../interfaces";
 
 const Films = () => {
   const filters = useSelector((state: RootState) => state.filters.filters);
