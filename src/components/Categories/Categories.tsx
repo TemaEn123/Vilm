@@ -4,23 +4,37 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { changeFilters } from "../../redux/slices/filtersSlice";
 
+import useThrottle from "../../helpers/hooks/useThrottle";
+
 import CategoryButton from "../../ui/CategoryButton/CategoryButton";
 import { ToggleButtonGroup } from "@mui/material";
 
 import { categories } from "../../data";
 
 const Categories = () => {
-  const [category, setCategory] = useState("");
+  const filters = useSelector((state: RootState) => state.filters.filters);
+
+  const [category, setCategory] = useState<string | undefined>(
+    filters.type ? "СЕРИАЛЫ" : filters["genres.name"]?.toUpperCase()
+  );
+
+  const [throttle, setThrottle] = useState<boolean>(false);
+
+  useThrottle(() => setThrottle(false), 500);
 
   const dispatch = useDispatch();
-
-  const filters = useSelector((state: RootState) => state.filters.filters);
 
   const handleChange = (
     _event: React.MouseEvent<HTMLElement>,
     newCat: string
   ) => {
+    setThrottle(true);
     setCategory(newCat);
+
+    if (Number(filters.page) > 1) {
+      dispatch(changeFilters(["page", "1"]));
+    }
+
     if (newCat === "СЕРИАЛЫ") {
       dispatch(changeFilters(["type", "tv-series"]));
     } else if (newCat) {
@@ -42,7 +56,7 @@ const Categories = () => {
       sx={{ flexWrap: "wrap", marginBottom: "10px" }}
     >
       {categories.map((cat: string) => (
-        <CategoryButton text={cat} key={cat} />
+        <CategoryButton throttle={throttle} text={cat} key={cat} />
       ))}
     </ToggleButtonGroup>
   );

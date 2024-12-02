@@ -12,7 +12,7 @@ export const filmsApi = createApi({
   endpoints: (builder) => ({
     getFilms: builder.query<IResponseFromFilmsApi, IFilters>({
       query: (filters) => ({
-        url: `movie?page=1&limit=16&selectFields=id&selectFields=name&selectFields=year&selectFields=votes&selectFields=poster&selectFields=rating&notNullFields=name&votes.kp=3000-6666666`,
+        url: `movie?limit=16&selectFields=id&selectFields=name&selectFields=year&selectFields=votes&selectFields=poster&selectFields=rating&notNullFields=name&votes.kp=3000-6666666`,
         headers: {
           accept: "application/json",
           "X-API-KEY": API_KEY,
@@ -21,6 +21,27 @@ export const filmsApi = createApi({
           ...filters,
         },
       }),
+      serializeQueryArgs: ({ endpointName }) => {
+        return endpointName;
+      },
+      merge: (currentCache, newItems, otherArgs) => {
+        if (Number(otherArgs.arg.page) > 1) {
+          currentCache.limit = newItems.limit;
+          currentCache.page = newItems.page;
+          currentCache.pages = newItems.pages;
+          currentCache.total = newItems.total;
+          currentCache.docs.push(...newItems.docs);
+        } else {
+          currentCache.limit = newItems.limit;
+          currentCache.page = newItems.page;
+          currentCache.pages = newItems.pages;
+          currentCache.total = newItems.total;
+          currentCache.docs = newItems.docs;
+        }
+      },
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg !== previousArg;
+      },
     }),
     getPopularFilms: builder.query<IResponseFromFilmsApi, null>({
       query: () => ({

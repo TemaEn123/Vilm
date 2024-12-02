@@ -34,4 +34,5 @@ export interface IFilters {
   year: string | undefined;
   ["countries.name"]: string | undefined;
   type: string | undefined;
+  page: string;
 }
